@@ -9,11 +9,23 @@
 import UIKit
 
 class ASAKVCModel: NSObject {
+    /**
+     Initialize with set parameter from json.
+     
+     - parameter dictionary: json
+     
+     - returns: ASAKVCModel object
+     */
     init(dictionary: [String: AnyObject]) {
         super.init()
         dictionary.forEach{(self.setValue($1, forKey: $0))}
     }
     
+    /**
+     Dictionary from ASAKVCModel object
+     
+     - returns: dictionary
+     */
     func dictionaryObject() -> [String : AnyObject] {
         return self.dictionaryWithValuesForKeys(self.dynamicType.allKeys())
     }
@@ -29,6 +41,11 @@ class ASAKVCModel: NSObject {
         return NSString(string: descriptionString) as String
     }
     
+    /**
+     Parameter keys in my and sub class.
+     
+     - returns: All parameter keys
+     */
     class func allKeys() -> [String] {
         
         var count: UInt32 = 0
