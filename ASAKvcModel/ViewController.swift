@@ -13,7 +13,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        let dic: Dictionary = ["str0" : "a", "str1" : "b", "str2" : "b", "num0" : 1, "num1" : 2, "num2" : 3]
+        let dic: Dictionary = ["str0" : "a", "str1" : "b", "str2" : "b", "num0" : 1, "num1" : 2, "num2" : 3, "errorKey" : "This key is error."]
         let obj: Object = Object(dictionary: dic)
         
         print("str0 : \(obj.str0)")

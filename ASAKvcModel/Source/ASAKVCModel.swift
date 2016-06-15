@@ -9,25 +9,13 @@
 import UIKit
 
 class ASAKVCModel: NSObject {
-    init(dictionary: [String : AnyObject]) {
+    init(dictionary: [String: AnyObject]) {
         super.init()
-        if dictionary.count == 0 {
-            return
-        }
-        
-        let allPropertyKeys = self.dynamicType.allKeys()
-        
-        for key: String in allPropertyKeys {
-            let val = dictionary[key]
-            if val != nil && val != nil {
-                self.setValue(val, forKey: key)
-            }
-        }
+        dictionary.forEach{(self.setValue($1, forKey: $0))}
     }
     
     func dictionaryObject() -> [String : AnyObject] {
-        let allKeys = self.dynamicType.allKeys()
-        return self.dictionaryWithValuesForKeys(allKeys)
+        return self.dictionaryWithValuesForKeys(self.dynamicType.allKeys())
     }
     
     func descriptionPropatys() -> String {
@@ -43,21 +31,29 @@ class ASAKVCModel: NSObject {
     
     class func allKeys() -> [String] {
         
-        var names: [String] = []
         var count: UInt32 = 0
-        self.classForCoder()
-        let properties:UnsafeMutablePointer<objc_property_t> = class_copyPropertyList(self.classForCoder(), &count)
-        
-        for i: UInt32 in 0..<count {
-            let property = properties[Int(i)];
-            let cname = property_getName(property)
-            let name = String.fromCString(cname)
+        var names:[String] = []
+        let properties = class_copyPropertyList(self.classForCoder(), &count)
+        for i in 0..<Int(count) {
+            let property = properties[i]
+            let propName = String(UTF8String: property_getName(property))
             
-            names.append(name!)
-            
+            names.append(propName!)
         }
-        free(properties)
-        return names
+        return names;
+    }
+    
+    override func setValue(value: AnyObject?, forUndefinedKey key: String) {
+        #if DEBUG
+            print("Class : \(self.dynamicType)(don't have the key : \(key))")
+        #endif
+    }
+    
+    override func valueForUndefinedKey(key: String) -> AnyObject? {
+        #if DEBUG
+            print("Class : \(self.dynamicType)(don't have the key : \(key))")
+        #endif
+        return nil
     }
 }
 
