@@ -30,6 +30,12 @@ class ASAKVCModel: NSObject {
         return self.dictionaryWithValuesForKeys(self.dynamicType.allKeys())
     }
     
+    
+    /**
+     Generate all property and the value for string.
+     
+     - returns: all property and the value
+     */
     func descriptionPropatys() -> String {
         let descriptionString = NSMutableString()
         descriptionString.appendString("\(self.description)\n")
@@ -59,6 +65,7 @@ class ASAKVCModel: NSObject {
         }
         return names;
     }
+    
     
     override func setValue(value: AnyObject?, forUndefinedKey key: String) {
         #if DEBUG
