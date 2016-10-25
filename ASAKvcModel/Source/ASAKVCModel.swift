@@ -59,7 +59,7 @@ class ASAKVCModel: NSObject {
 		let properties = class_copyPropertyList(self.classForCoder(), &count)
 		for i in 0..<Int(count) {
 			let property = properties?[i]
-			let propName = String(describing: property_getName(property))
+			let propName = String(cString: property_getName(property))
 			
 			names.append(propName)
 		}
