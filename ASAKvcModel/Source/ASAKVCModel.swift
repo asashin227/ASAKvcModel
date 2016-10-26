@@ -8,7 +8,7 @@
 
 import UIKit
 
-public class ASAKVCModel: NSObject {
+open class ASAKVCModel: NSObject {
 	/**
 	Initialize with parameter from json.
 	
