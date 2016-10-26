@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ASAKVCModel: NSObject {
+public class ASAKVCModel: NSObject {
 	/**
 	Initialize with parameter from json.
 	
@@ -26,7 +26,7 @@ class ASAKVCModel: NSObject {
 	
 	- returns: dictionary
 	*/
-	func dictionaryObject() -> [String : AnyObject] {
+	public func dictionaryObject() -> [String : AnyObject] {
 		return self.dictionaryWithValues(forKeys: self.allKeys()) as [String : AnyObject]
 	}
 	
@@ -36,7 +36,7 @@ class ASAKVCModel: NSObject {
 	
 	- returns: all property and the value
 	*/
-	func descriptionPropatys() -> String {
+	public func descriptionPropatys() -> String {
 		let descriptionString = NSMutableString()
 		descriptionString.append("\(self.description)\n")
 		let allKeys = self.classForCoder.allKeys()
@@ -52,7 +52,7 @@ class ASAKVCModel: NSObject {
 	
 	- returns: All parameter keys
 	*/
-	class func allKeys() -> [String] {
+	public class func allKeys() -> [String] {
 		
 		var count: UInt32 = 0
 		var names:[String] = []
@@ -71,7 +71,7 @@ class ASAKVCModel: NSObject {
 	
 	- returns: All parameter keys
 	*/
-	func allKeys() -> [String] {
+	public func allKeys() -> [String] {
 		return self.classForCoder.allKeys()
 	}
 	
