@@ -16,10 +16,15 @@ open class ASAKVCModel: NSObject {
 	
 	- returns: ASAKVCModel object
 	*/
-	public init(dictionary: [String: AnyObject]) {
-		super.init()
-		dictionary.forEach{(self.setValue($1, forKey: $0))}
-	}
+    public init(dictionary: [String: AnyObject]) {
+        super.init()
+        
+        dictionary.forEach{
+            if $1 != nil && !$1.isKind(of: NSNull.classForCoder()) {
+                (self.setValue($1, forKey: $0))
+            }
+        }
+    }
 	
 	/**
 	Dictionary from ASAKVCModel object
