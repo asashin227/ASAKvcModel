@@ -73,11 +73,19 @@ open class ASAKVCModel: NSObject {
 	
 	/**
 	Parameter keys in my and sub class.
-	
+
 	- returns: All parameter keys
 	*/
 	public func allKeys() -> [String] {
-		return self.classForCoder.allKeys()
+	return self.classForCoder.allKeys()
 	}
-	
+	open override func setValue(_ value: Any?, forUndefinedKey key: String) {
+	#if DEBUG
+	print("not found the key '\(key)' in self !!!!");
+	#endif
+	}
+    
+    open override func value(forUndefinedKey key: String) -> Any? {
+        return nil
+    }
 }
