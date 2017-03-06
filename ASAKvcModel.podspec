@@ -9,7 +9,7 @@ Pod::Spec.new do |s|
   s.author       = { "" => "" }
   s.source       = { :git => "https://github.com/asashin227/ASAKvcModel.git", :tag => "#{s.version}" }
   
-  s.ios.deployment_target = '9.0'
+  s.ios.deployment_target = '8.0'
   
   s.source_files  = "ASAKvcModel/Source/*.swift"
 
