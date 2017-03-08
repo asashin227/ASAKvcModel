@@ -16,7 +16,7 @@ open class ASAKVCModel: NSObject {
      
      - returns: ASAKVCModel object
      */
-    public init(dictionary: [String: Any]) {
+    public init(dictionary: [String: AnyObject]) {
         super.init()
         
         dictionary.forEach () {
