@@ -9,13 +9,15 @@
 import UIKit
 
 open class ASAKVCModel: NSObject {
-    /**
-     Initialize with parameter from json.
-     
-     - parameter dictionary: json
-     
-     - returns: ASAKVCModel object
-     */
+    
+    /// Initialize
+    public override init() {
+        super.init()
+    }
+    
+    /// Initialize with parameter from json.
+    ///
+    /// - Parameter dictionary: Dict from json
     public init(dictionary: [String: AnyObject]) {
         super.init()
         
@@ -26,37 +28,31 @@ open class ASAKVCModel: NSObject {
         }
     }
     
-    /**
-     Dictionary from ASAKVCModel object
-     
-     - returns: dictionary
-     */
+    /// Dictionary from Model object
+    ///
+    /// - Returns: dictionary
     public func dictionaryObject() -> [String : AnyObject] {
         return self.dictionaryWithValues(forKeys: self.allKeys()) as [String : AnyObject]
     }
     
     
-    /**
-     Generate all property and the value for string.
-     
-     - returns: all property and the value
-     */
+    /// Generate all property and the value for string.
+    ///
+    /// - Returns: All property and the value
     public func descriptionPropatys() -> String {
         let descriptionString = NSMutableString()
         descriptionString.append("\(self.description)\n")
         let allKeys = self.classForCoder.allKeys()
         for key: String in allKeys {
-            let appendedString = "\(key) : \(self.value(forKey: key)) \n"
+            let appendedString = "\(key) : \(String(describing: self.value(forKey: key))) \n"
             descriptionString.append(appendedString)
         }
         return NSString(string: descriptionString) as String
     }
     
-    /**
-     Parameter keys in my and sub class.
-     
-     - returns: All parameter keys
-     */
+    /// Parameter Keys in my and sub class.
+    ///
+    /// - Returns: All parameter keys
     public class func allKeys() -> [String] {
         
         var count: UInt32 = 0
@@ -71,11 +67,10 @@ open class ASAKVCModel: NSObject {
         return names;
     }
     
-    /**
-     Parameter keys in my and sub class.
-     
-     - returns: All parameter keys
-     */
+    
+    /// Parameter Keys in my and sub class.
+    ///
+    /// - Returns: All parameter keys
     public func allKeys() -> [String] {
         return self.classForCoder.allKeys()
     }
